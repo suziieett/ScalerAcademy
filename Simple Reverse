@@ -1,0 +1,9 @@
+public class Solution {
+    public String solve(String A) {
+        StringBuilder str = new StringBuilder();
+        str.append(A);
+        str = str.reverse();
+        
+        return str.toString();
+    }
+}
