@@ -1,0 +1,32 @@
+public class Solution {
+    public int[] solve(int[] A, int[] B) {
+       
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        ArrayList<Integer> arrayList = new ArrayList<>();
+
+        // Putting all elements of array A in hashset with frequency of each element
+       for(int i=0; i<A.length; i++){
+           if(hm.containsKey(A[i])){
+              hm.put(A[i], hm.get(A[i])+1);
+           }
+           else{
+               hm.put(A[i], 1);
+
+           }
+       }
+
+      // Comparing each elements of array B in hashset, if found decreade the frequency of that element
+       for(int i=0; i<B.length; i++){
+           if(hm.containsKey(B[i]) && hm.get(B[i])>0){
+               arrayList.add(B[i]);
+               hm.put(B[i], hm.get(B[i])-1);
+           }
+       }
+       
+       // Convert arrraylist to array
+       int[] array = arrayList.stream().mapToInt(i->i).toArray();
+       
+       return array;
+
+    }
+}
