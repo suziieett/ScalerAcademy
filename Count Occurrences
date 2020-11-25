@@ -1,0 +1,24 @@
+public class Solution {
+    public int solve(String A) {
+   
+        String B = "bob";
+        int sizeB = B.length(), count=0, start=0, end=0;
+        String temp="";
+
+        for (int i=0; i<A.length();i++){
+            if(A.charAt(i) == B.charAt(0)){
+                start=i;
+                end = i+ sizeB;
+                if(end>A.length()){
+                    return count;
+                }
+
+                temp = A.substring(start,end);
+                if(B.equals(temp)){
+                    count++;
+                }
+            }
+        }
+       return count;
+    }
+}
