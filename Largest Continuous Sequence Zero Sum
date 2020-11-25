@@ -1,0 +1,47 @@
+public class Solution {
+    public int[] lszero(int[] A) {
+        
+        int[] cummArray= new int[A.length];
+        cummArray[0]=A[0];
+
+        for(int i=1; i<A.length; i++){
+            cummArray[i] = cummArray[i-1]+ A[i];
+        }
+
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        
+        // To take care if only 0 present in array
+        hm.put(0,-1);
+        
+        int start=0, end=0,max=Integer.MIN_VALUE, temp=0;
+        boolean foundZero = false;
+
+        // Checking for longest sequence whose sum is zero
+        for (int i=0; i<cummArray.length; i++){
+            if(hm.containsKey(cummArray[i])) {
+                temp = i - hm.get(cummArray[i]);
+                foundZero = true;
+                if (temp > max) {
+                    max = temp;
+                    start = hm.get(cummArray[i]) + 1;
+                    end = i;
+                }
+            }
+            else{
+                hm.put(cummArray[i],i);
+            }
+        }
+        int len= end-start+1;
+        int[] arr = new int[len];
+        
+        for(int i=0; i<len; i++){
+            arr[i] = A[start];
+            start++;
+        }
+        
+        if(foundZero){
+            return arr;
+        }
+        return new int[0]; 
+    }
+}
