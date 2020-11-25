@@ -1,0 +1,27 @@
+public class Solution {
+    // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
+    public int[] twoSum(final int[] A, int B) {
+        
+       int[] arr = new int[2];
+      
+       HashMap<Integer,Integer> hm = new HashMap<>();
+
+       for(int i=0; i<A.length; i++){
+           // Checking the another value present in hashset which give desired sum  
+           if(hm.containsKey(B-A[i])){
+              arr[0]= hm.get(B-A[i])+1;
+              arr[1] = i+1;
+              
+              return arr;
+           }
+           else{
+               // Found element for first time add them in hashset with index value.
+               if(!hm.containsKey(A[i])){
+                 hm.put(A[i], i);
+                }
+           }
+       }
+       // Return empty array
+        return new int[0]; 
+    }
+}
