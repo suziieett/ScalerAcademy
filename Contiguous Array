@@ -1,0 +1,26 @@
+public class Solution {
+    public int solve(int[] A) {
+      
+      // Changing all zeros to -1, commulative sum can be zero or one
+      for(int i=0; i<A.length;i++){
+         if(A[i] ==0){
+              A[i]=-1;
+          }
+      }
+      HashMap<Integer,Integer> hs = new HashMap<>();
+      hs.put(0,-1);
+      int sum=0, max= 0;
+      for (int i=0; i<A.length;i++){
+          sum += A[i];
+          if(hs.containsKey(sum)){
+              max = Math.max(max, i- hs.get(sum));
+          }
+          else{
+              hs.put(sum, i);
+          }
+        }
+        return max;
+    }
+}
+
+
