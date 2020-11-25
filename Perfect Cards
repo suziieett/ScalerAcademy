@@ -1,0 +1,24 @@
+public class Solution {
+    public String solve(int[] A) {
+        
+        if(A.length ==0 || (A.length %2 !=0)) return "LOSE";
+        
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        ArrayList<Integer> list = new ArrayList<>();
+
+        for(int i=0; i<A.length; i++){
+            if(hm.containsKey(A[i])){
+                hm.put(A[i], hm.get(A[i])+1);
+            }
+            else{
+                hm.put(A[i], 1);
+                list.add(A[i]);
+            }
+        }
+        // Hashset size is 2 means having 2 different elements only; and second part chacking the equal number of both the elements
+        if( hm.size() == 2 && hm.get(list.get(0)) == hm.get(list.get(1)) ){
+                return "WIN";
+        }
+        return "LOSE";
+    }
+}
