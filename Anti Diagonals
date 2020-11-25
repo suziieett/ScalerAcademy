@@ -1,0 +1,50 @@
+public class Solution {
+    public ArrayList<ArrayList<Integer>> diagonal(ArrayList<ArrayList<Integer>> A) {
+        
+        int n= A.size();
+        ArrayList<ArrayList<Integer>> arrayList = new ArrayList<>();
+        int diagonalN= 0;
+        
+        for(int i=0;i<n; i++){
+            arrayList.add(new ArrayList<>());
+            
+            // Adding the first diagonal element to arraylist
+            arrayList.get(diagonalN).add( A.get(0).get(i) );
+
+            int noOfElements = i;
+            int indexShift=1;
+            
+            // Adding the next diagonal element to arraylist
+            while(noOfElements > 0){
+            
+                // Getting the diagonal element available in next row and left column then adding to arraylist
+                arrayList.get(diagonalN).add( A.get(indexShift).get(i-indexShift) );
+                indexShift++;
+                noOfElements--;
+            }
+            diagonalN++;
+        }
+
+        // Doing same for rest diagonal element , after covering elemennts above till longest diagonal
+        for(int i=n-2;i>=0; i--){
+            arrayList.add(new ArrayList<>());
+            arrayList.get(diagonalN).add( A.get(n-1-i).get(n-1) );
+
+            int noOfElements = i;
+            int indexShift=1;
+            while(noOfElements > 0){
+                arrayList.get(diagonalN).add( A.get(n-1-i+indexShift).get(n-1-indexShift) );
+                indexShift++;
+                noOfElements--;
+            }
+            diagonalN++;
+        }
+
+        return arrayList;
+
+    }
+}
+
+
+
+
