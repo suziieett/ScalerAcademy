@@ -1,0 +1,23 @@
+public class Solution {
+    public ArrayList<ArrayList<Integer>> solve(int A) {
+        
+    ArrayList<ArrayList<Integer>> arrList = new ArrayList<ArrayList<Integer>>();
+ 
+    int i,j;
+    for(i=0; i<A;i++){
+        arrList.add(new ArrayList<Integer>());
+        for(j=0; j<=i; j++){
+        
+            // Adding first and last element value i.e "1" to every row
+            if(j==0 || j == i){
+                arrList.get(i).add(j,1);
+            }
+            else{
+               arrList.get(i).add(arrList.get(i-1).get(j-1) + arrList.get(i-1).get(j));
+            }
+        }
+    }
+    return arrList;
+
+    }
+}
