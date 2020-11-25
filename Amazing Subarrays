@@ -1,0 +1,15 @@
+public class Solution {
+    public int solve(String A) {
+        int result=0, size = A.length();
+        char c;
+
+        for(int i=0; i<size;i++){
+            c = Character.toLowerCase(A.charAt(i));
+
+            if(c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u'){
+                result = (result + size - i) % 10003;
+            }
+        }
+        return result;
+    }
+}
