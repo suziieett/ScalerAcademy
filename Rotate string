@@ -1,0 +1,13 @@
+public class Solution {
+    public String solve(String A, int B) {
+        
+        B = B % A.length();
+
+        if(B==0) return A;
+        StringBuilder str = new StringBuilder(A);
+
+        A = str.substring(A.length()-B, A.length()) + str.substring(0,A.length()-B);
+
+        return A;
+    }
+}
