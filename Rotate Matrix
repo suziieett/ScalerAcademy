@@ -1,0 +1,31 @@
+public class Solution {
+    public void solve(int[][] A) {
+        
+    int level=0, noOfLevel= A.length/2;
+
+    int last= A[0].length-1;
+
+    while(level<noOfLevel){
+        for(int i=level; i<last; i++){
+            // Swaping first element of row to last element of row
+            swap(A, level,i, i,last);
+            
+            // Swaping first element of row to last element of last column
+            swap(A, level,i, last,last-i+level);
+            
+            // Swaping first element of row to first element of last row
+            swap(A, level,i, last-i+level,level);
+        }
+        level++;
+        last--;
+
+     }
+    
+    }
+    public static void swap(int [][]A, int i, int j, int x, int y){
+        int temp = A[i][j];
+        A[i][j] = A[x][y];
+        A[x][y]=temp;
+
+    }
+}
