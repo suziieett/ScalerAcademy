@@ -1,0 +1,36 @@
+public class Solution {
+    public int[][] generateMatrix(int A) {
+       
+        int[][] arr = new int[A][A];
+        int i;
+       
+        int lc=0, rc = A-1, tr=0, br = A-1,count=1;
+
+        while(lc<=rc && tr<=br){
+            // Creating top row
+            for(i=lc; i<=rc; i++){
+                 arr[tr][i]=count++;
+            }
+            tr++;
+            
+            // Creating right column
+            for(i=tr; i<=br; i++){
+                arr[i][rc]=count++;
+            }
+            rc--;
+            
+            // Creating buttom row
+            for(i=rc; i>=lc; i--){
+                 arr[br][i]=count++;
+            }
+            br--;
+            
+            // Creating left column
+            for(i=br; i>=tr; i--){
+                arr[i][lc]=count++;
+            }
+            lc++;
+        }    
+        return arr;
+    }
+}
