@@ -1,0 +1,25 @@
+import java.lang.*;
+import java.util.*;
+
+public class Main {
+    public static int count=1;
+    public static void main(String[] args) {
+
+        // To get input from user on console
+        Scanner sc = new Scanner(System.in);
+        
+        // To get next interger value from console
+        int num = sc.nextInt();
+        
+        printNum(num);
+    }
+    public static int printNum(int num){
+        if(num <1) return 0;
+        System.out.print( (count++)+" ");
+        if(num == 1){
+            return 1;
+        }
+        return printNum(--num);
+    }
+
+}
