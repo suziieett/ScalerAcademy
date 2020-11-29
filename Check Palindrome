@@ -1,0 +1,22 @@
+public class Solution {
+    public int solve(String A) {
+   
+        int start =0 , end = A.length()-1;
+        return isPalindrome(A,start,end);
+
+    }
+    public static int isPalindrome(String A, int start, int end){
+
+        if(A.length()<2){
+            return 1;
+        }
+        if(start>= end){
+            return 1;
+        }
+        if(A.charAt(start) != A.charAt(end)){
+            return 0;
+        }
+        return isPalindrome(A,++start, --end);
+    }
+
+}
