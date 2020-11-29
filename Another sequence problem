@@ -1,0 +1,20 @@
+public class Solution {
+    public int solve(int A) {
+     
+     return (termVal(A));
+
+    }
+    public static int termVal(int A){
+
+        if(A ==0 || A==1){
+            return 1;
+        }
+        else if(A==2){
+            return 2;
+        }
+
+        // Recursively calling the function till it reaches the value where if or else condition satisfies
+        return  termVal(A-1) + termVal(A-2) + termVal(A-3) +A;
+
+    }
+}
