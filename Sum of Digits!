@@ -1,0 +1,33 @@
+public class Solution {
+    public int solve(int A) {
+    
+    String str= Integer.toString(A);
+    int start =0 , end = str.length()-1,sum=0;
+    return sumOfDigit(str,start,end,sum);
+    
+
+    }
+    public static int sumOfDigit(String str, int start, int end, int sum){
+
+        // If number is single digit then retrun the value directly
+        if(str.length()<2){
+            return Character.getNumericValue(str.charAt(0));
+        }
+        if(start >= end){
+            if(start == end) {
+                return sum +=  Character.getNumericValue(str.charAt(start));
+            }
+            else{
+                return  sum;
+            }
+
+        }
+        // Sum the value of leftmost and rightmost digit from number
+        sum +=  Character.getNumericValue(str.charAt(start)) + Character.getNumericValue(str.charAt(end));
+
+        return sumOfDigit(str,++start, --end,sum) ;
+
+    }
+
+
+}
