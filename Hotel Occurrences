@@ -1,0 +1,63 @@
+//Optimize this code using simple solution
+public class Solution {
+    public int[] solve(int[] A) {
+      
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        HashSet<Integer> hs = new HashSet<>();
+
+        // Creating hashset for unique value and hashmap keeping element with its last index value
+        for(int i=0; i<A.length; i++){
+            hm.put(A[i], i);
+            hs.add(A[i]);
+        }
+        //Creating an array according to last index value of each elements of A
+        int[] hmIndex= new int[hm.size()];
+ 
+        Iterator<Integer> value = hs.iterator();
+        int i=0;
+        while (value.hasNext()){
+            hmIndex[i] = hm.get(value.next());
+            i++;
+        }
+       
+        //Sorting the index value as we have to consider the last occurance of each element
+        Arrays.sort(hmIndex);
+        
+        int[] result = new int[hmIndex.length];
+        
+        // Retriving the element value accroding to last occurance of their index
+        for(i=0; i< result.length; i++){
+            result[i] =A[hmIndex[i]];
+        }
+        return result;
+        
+    }
+}
+
+/*
+//Another method
+
+        // Creating array with every index value zero
+        int chk[] = new int[1001];
+        ArrayList<Integer> ans = new ArrayList<Integer>();
+
+        // Started traverssing from last element as we have to keep last occurance of each element only
+        for(int i=A.length-1; i>=0; i--)
+        {
+            int x = A[i];
+            if(chk[x]==0)
+            {
+                ans.add(x);
+                chk[x] = 1;
+            }
+        }
+        
+        // Reversing the arraylist to get the actual traversal array
+        Collections.reverse(ans);
+        return ans;
+*/
+
+
+
+
+
